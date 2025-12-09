@@ -117,8 +117,6 @@ local function focus_window(direction)
 end
 
 -- Keymaps
--- vim.keymap.set("n", "<D-k>", ":bnext<CR>", opts)
-vim.keymap.set("n", "<D-j>", ":bprevious<CR>", opts)
 vim.keymap.set("n", "<D-k>", function() focus_window(1) end, opts)
 vim.keymap.set("n", "<D-j>", function() focus_window(-1) end, opts)
 vim.keymap.set("n", "<D-S-k>", function() swap_window(1) end, opts)  -- move right
