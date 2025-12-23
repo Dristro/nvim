@@ -25,7 +25,7 @@ return {
     sig.setup(opts)
 
     -- Wait 500 ms before considering the user idle
-    vim.o.updatetime = 500
+    -- vim.o.updatetime = 500
 
     -- Optional: re-trigger signature only when typing '(' after identifier,
     -- ignoring auto-inserted ')'
