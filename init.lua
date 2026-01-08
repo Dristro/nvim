@@ -44,12 +44,14 @@ end)
 -- Navigation
 local opts = { silent = true }
 
+-- Terminal stuff
 vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-w>h]], opts)
 vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-w>j]], opts)
 vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-w>k]], opts)
 vim.keymap.set('t', '<C-l>', [[<C-\><C-n><C-w>l]], opts)
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]]) -- Close/termintion
 
+-- Navigation stuff (move bw windows or buffers ig)
 vim.keymap.set('n', '<leader>h', [[<C-\><C-n><C-w>h]], opts)
 vim.keymap.set('n', '<leader>j', [[<C-\><C-n><C-w>j]], opts)
 vim.keymap.set('n', '<leader>k', [[<C-\><C-n><C-w>k]], opts)

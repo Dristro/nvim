@@ -117,8 +117,9 @@ local function focus_window(direction)
 end
 
 -- Keymaps
-vim.keymap.set("n", "<D-k>", function() focus_window(1) end, opts)
-vim.keymap.set("n", "<D-j>", function() focus_window(-1) end, opts)
-vim.keymap.set("n", "<D-S-k>", function() swap_window(1) end, opts)  -- move right
-vim.keymap.set("n", "<D-S-j>", function() swap_window(-1) end, opts) -- move left
+vim.keymap.set('n', '<C-j>', function() focus_window(-1) end, { noremap = true, silent = true })
+vim.keymap.set('n', '<C-k>', function() focus_window(1) end,  { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>j', function() swap_window(-1) end, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>k', function() swap_window(1) end,  { noremap = true, silent = true })
 
