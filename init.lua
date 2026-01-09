@@ -29,7 +29,7 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true }
 ) -- Get definition of symbol
 
-vim.keymap.set('n', '<leader>fs', '<cmd>Telescope treesitter<CR>')
+vim.keymap.set('n', '<leader>fs', '<cmd>Telescope treesitter<CR>') -- Find symbols
 
 -- Terminal stuff
 -- vim.keymap.set('n', '<leader>t', ':belowright split | terminal<CR>')
