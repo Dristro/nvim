@@ -15,7 +15,7 @@ vim.opt.backup = false
 vim.opt.undofile = true
 vim.opt.scrolloff = 8
 vim.opt.termguicolors = true
-vim.keymap.set("x", "p", "P")  -- paste w/o losing paste reg
+vim.keymap.set("x", "p", "P") -- paste w/o losing paste reg
 
 
 -- Basic keymaps
@@ -28,7 +28,7 @@ vim.api.nvim_set_keymap(
     '<loader>gd',
     '<cmd>lua vim.lsp.buf.definition()<CR>',
     { noremap = true, silent = true }
-) -- Get definition of symbol
+)                                                                  -- Get definition of symbol
 
 vim.keymap.set('n', '<leader>fs', '<cmd>Telescope treesitter<CR>') -- Find symbols
 
@@ -58,6 +58,20 @@ vim.keymap.set('n', '<leader>j', [[<C-\><C-n><C-w>j]], opts)
 vim.keymap.set('n', '<leader>k', [[<C-\><C-n><C-w>k]], opts)
 vim.keymap.set('n', '<leader>l', [[<C-\><C-n><C-w>l]], opts)
 
+-- BufferLine keymaps
+vim.keymap.set('n', '<leader>n', '<Cmd>BufferLineCycleNext<CR>', opts)
+vim.keymap.set('n', '<leader>p', '<Cmd>BufferLineCyclePrev<CR>', opts)
+vim.keymap.set("n", "<leader>x", function()
+    local current = vim.api.nvim_get_current_buf()
+    vim.cmd("BufferLineCycleNext")
+    -- if cycling didn't change buffer (e.g. last buffer),
+    -- go to previous instead
+    if vim.api.nvim_get_current_buf() == current then
+        vim.cmd("BufferLineCyclePrev")
+    end
+
+    vim.cmd("bdelete " .. current)
+end, opts)
 
 -- Load config(s)
 require('config.lazy')
