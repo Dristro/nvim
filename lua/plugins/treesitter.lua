@@ -1,14 +1,19 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = 'master',
-    lazy = false,
+
+    branch = "master",
+    commit = "42fc28ba918343ebfd5565147a42a26580579482",
+
     build = ":TSUpdate",
+
     config = function()
-        -- Treesitter settings | Parsing and syntax highlighing
-        local config = require("nvim-treesitter.configs")
-        config.setup({
+        require("nvim-treesitter.configs").setup({
             ensure_installed = {
                 "lua",
+                "vim",
+                "vimdoc",
+                "query",
+
                 "python",
                 "java",
                 "rust",
@@ -16,11 +21,20 @@ return {
                 "cpp",
                 "javascript",
                 "html",
+
                 "markdown",
                 "markdown_inline",
             },
-            highlight = { enable = true },
-            indent = { enable = true },
+
+            auto_install = true,
+
+            highlight = {
+                enable = true,
+            },
+
+            indent = {
+                enable = true,
+            },
         })
-    end
+    end,
 }
