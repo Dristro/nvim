@@ -73,6 +73,9 @@ vim.keymap.set("n", "<leader>x", function()
     vim.cmd("bdelete " .. current)
 end, opts)
 
+-- Don't show '~' for empty lines
+vim.opt.fillchars = { eob = " " }
+
 -- Load config(s)
 require('config.lazy')
 require('config.lsp')
