@@ -1,0 +1,77 @@
+-- lua/plugins/image.lua
+return {
+    "3rd/image.nvim",
+    opts = {
+        processor = "magick_cli",
+    },
+    -- Some 'custom' thing...
+    -- I tried, doens't work well
+    -- Lite for now, I might fix it later if its really important.
+    --
+    --
+    -- config = function(_, opts)
+    --     require("image").setup(opts)
+    --
+    --     local function get_image_metadata(path)
+    --         local format_str = table.concat({
+    --             "%w", "%h", "%[channels]", "%z", "%m", "%[colorspace]", "%b",
+    --         }, "|")
+    --
+    --         local output = vim.fn.system({ "magick", "identify", "-format", format_str, path })
+    --         if vim.v.shell_error ~= 0 then
+    --             output = vim.fn.system({ "identify", "-format", format_str, path })
+    --         end
+    --
+    --         local w, h, channels, depth, fmt, colorspace, size = output:match(
+    --             "(%d+)|(%d+)|([^|]*)|([^|]*)|([^|]*)|([^|]*)|([^|]*)"
+    --         )
+    --
+    --         return {
+    --             width = w,
+    --             height = h,
+    --             channels = channels,
+    --             bit_depth = depth,
+    --             format = fmt,
+    --             colorspace = colorspace,
+    --             file_size = size,
+    --         }
+    --     end
+    --
+    --     local function show_image_with_meta(path)
+    --         path = path or vim.fn.expand("%:p")
+    --
+    --         vim.cmd("vsplit")
+    --         vim.cmd("vertical resize 40")
+    --         local meta_buf = vim.api.nvim_create_buf(false, true)
+    --         vim.api.nvim_win_set_buf(0, meta_buf)
+    --
+    --         local meta = get_image_metadata(path)
+    --         local lines = {
+    --             "Image Metadata",
+    --             "──────────────────────────────────────────",
+    --             "File:       " .. vim.fn.fnamemodify(path, ":t"),
+    --             "Dimensions: " .. (meta.width or "?") .. " x " .. (meta.height or "?") .. " px",
+    --             "Channels:   " .. (meta.channels or "?"),
+    --             "Bit depth:  " .. (meta.bit_depth or "?"),
+    --             "Format:     " .. (meta.format or "?"),
+    --             "Colorspace: " .. (meta.colorspace or "?"),
+    --             "File size:  " .. (meta.file_size or "?"),
+    --         }
+    --         vim.api.nvim_buf_set_lines(meta_buf, 0, -1, false, lines)
+    --         vim.api.nvim_buf_set_option(meta_buf, "modifiable", false)
+    --         vim.api.nvim_buf_set_option(meta_buf, "buftype", "nofile")
+    --
+    --         vim.cmd("wincmd h")
+    --         local img = require("image").from_file(path, {
+    --             window = vim.api.nvim_get_current_win(),
+    --             buffer = vim.api.nvim_get_current_buf(),
+    --             with_virtual_padding = true,
+    --         })
+    --         img:render()
+    --     end
+    --
+    --     vim.api.nvim_create_user_command("ImageInfo", function(cmd_opts)
+    --         show_image_with_meta(cmd_opts.args ~= "" and cmd_opts.args or nil)
+    --     end, { nargs = "?", complete = "file" })
+    -- end,
+}
