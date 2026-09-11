@@ -29,6 +29,8 @@ vim.opt.scrolloff = 8
 vim.opt.termguicolors = true
 vim.keymap.set("x", "p", "P", "Paste without losing paste register")
 
+vim.g.gitblame_delay = 450  -- gitblame delay
+
 
 -- Basic keymaps
 vim.keymap.set('n', '<leader>w', ':w<CR>', 'Save file')
